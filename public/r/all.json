@@ -1,0 +1,11 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "all",
+  "title": "All Components",
+  "description": "Installs all registry components",
+  "registryDependencies": [
+    "button",
+    "dialog"
+  ],
+  "type": "registry:ui"
+}
