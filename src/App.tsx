@@ -1,35 +1,68 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Button } from "./components/ui/button";
+import {
+  Dialog,
+  DialogBody,
+  DialogClose,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./components/ui/dialog";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="space-y-2">
+      <div className="space-x-2">
+        <Button size="xs">Button</Button>
+        <Button size="sm">Button</Button>
+        <Button size="default">Button</Button>
+        <Button size="lg">Button</Button>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      <div className="space-x-2">
+        <Button size="xs">Button</Button>
+        <Button size="sm">Button</Button>
+        <Button size="default">Button</Button>
+        <Button size="lg">Button</Button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+      <div className="space-x-2">
+        <Button size="xs">Button</Button>
+        <Button size="sm">Button</Button>
+        <Button size="default">Button</Button>
+        <Button size="lg">Button</Button>
+      </div>
+      <div className="space-x-2">
+        <Button size="xs">Button</Button>
+        <Button size="sm">Button</Button>
+        <Button size="default">Button</Button>
+        <Button variant="outline" size="lg">
+          Button
+        </Button>
+      </div>
 
-export default App
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button>Open Dialog</Button>
+        </DialogTrigger>
+        <DialogContent autoFocus>
+          <DialogHeader>
+            <DialogTitle>Create Example Task</DialogTitle>
+          </DialogHeader>
+
+          <DialogBody>
+            <div className="grid grid-cols-12 gap-3"></div>
+          </DialogBody>
+
+          <DialogFooter className="flex justify-end gap-2">
+            <DialogClose asChild>
+              <Button variant="outline">Cancel</Button>
+            </DialogClose>
+            <Button type="submit">Save changes</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </div>
+  );
+};
+
+export default App;
