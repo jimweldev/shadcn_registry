@@ -38,6 +38,19 @@
           "target": "components/ui/dialog.tsx"
         }
       ]
+    },
+    {
+      "name": "form",
+      "type": "registry:ui",
+      "title": "Hello World",
+      "description": "A simple hello world component",
+      "files": [
+        {
+          "path": "src/registry/new-york/ui/form.tsx",
+          "type": "registry:component",
+          "target": "components/ui/form.tsx"
+        }
+      ]
     }
   ]
 }
