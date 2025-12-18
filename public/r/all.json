@@ -4,8 +4,8 @@
   "title": "All Components",
   "description": "Installs all registry components",
   "registryDependencies": [
-    "button",
-    "dialog"
+    "https://jimweldev-shadcn-registry.vercel.app/r/button.json",
+    "https://jimweldev-shadcn-registry.vercel.app/r/dialog.json"
   ],
   "type": "registry:ui"
 }
