@@ -10,7 +10,8 @@
       "description": "Installs all registry components",
       "registryDependencies": [
         "https://jimweldev-shadcn-registry.vercel.app/r/button.json",
-        "https://jimweldev-shadcn-registry.vercel.app/r/dialog.json"
+        "https://jimweldev-shadcn-registry.vercel.app/r/dialog.json",
+        "https://jimweldev-shadcn-registry.vercel.app/r/form.json"
       ]
     },
     {
@@ -36,6 +37,21 @@
           "path": "src/registry/new-york/ui/dialog.tsx",
           "type": "registry:component",
           "target": "components/ui/dialog.tsx"
+        }
+      ]
+    },
+    {
+      "name": "form",
+      "type": "registry:ui",
+      "title": "Hello World",
+      "description": "A simple hello world component",
+      "dependencies": ["@radix-ui/react-label", "@radix-ui/react-slot"],
+      "registryDependencies": ["label"],
+      "files": [
+        {
+          "path": "src/registry/new-york/ui/form.tsx",
+          "type": "registry:component",
+          "target": "components/ui/form.tsx"
         }
       ]
     }
