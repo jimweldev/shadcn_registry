@@ -1,8 +1,11 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "dialog",
-  "title": "Hello World",
-  "description": "A simple hello world component",
+  "title": "Dialog",
+  "description": "A modal dialog component for displaying content in a popup overlay",
+  "dependencies": [
+    "@radix-ui/react-dialog"
+  ],
   "files": [
     {
       "path": "src/registry/new-york/ui/dialog.tsx",

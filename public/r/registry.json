@@ -14,11 +14,13 @@
         "https://jimweldev-shadcn-registry.vercel.app/r/form.json"
       ]
     },
+
     {
       "name": "button",
       "type": "registry:ui",
-      "title": "Hello World",
-      "description": "A simple hello world component",
+      "title": "Button",
+      "description": "A versatile button component with multiple variants and sizes",
+      "dependencies": ["@radix-ui/react-slot"],
       "files": [
         {
           "path": "src/registry/new-york/ui/button.tsx",
@@ -30,8 +32,9 @@
     {
       "name": "dialog",
       "type": "registry:ui",
-      "title": "Hello World",
-      "description": "A simple hello world component",
+      "title": "Dialog",
+      "description": "A modal dialog component for displaying content in a popup overlay",
+      "dependencies": ["@radix-ui/react-dialog"],
       "files": [
         {
           "path": "src/registry/new-york/ui/dialog.tsx",
@@ -43,8 +46,8 @@
     {
       "name": "form",
       "type": "registry:ui",
-      "title": "Hello World",
-      "description": "A simple hello world component",
+      "title": "Form",
+      "description": "Form components with validation and state management",
       "dependencies": ["@radix-ui/react-label", "@radix-ui/react-slot"],
       "registryDependencies": ["label"],
       "files": [

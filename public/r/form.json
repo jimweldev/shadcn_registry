@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "form",
-  "title": "Hello World",
-  "description": "A simple hello world component",
+  "title": "Form",
+  "description": "Form components with validation and state management",
   "dependencies": [
     "@radix-ui/react-label",
     "@radix-ui/react-slot"

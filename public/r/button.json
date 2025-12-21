@@ -1,8 +1,11 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "button",
-  "title": "Hello World",
-  "description": "A simple hello world component",
+  "title": "Button",
+  "description": "A versatile button component with multiple variants and sizes",
+  "dependencies": [
+    "@radix-ui/react-slot"
+  ],
   "files": [
     {
       "path": "src/registry/new-york/ui/button.tsx",
