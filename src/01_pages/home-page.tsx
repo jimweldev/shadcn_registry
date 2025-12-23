@@ -1,7 +1,10 @@
 const HomePage = () => {
   return (
     <div>
-      npx shadcn@latest add http://localhost:5173/r/all.json --overwrite
+      <kbd>
+        npx shadcn@latest add
+        https://jimweldev-shadcn-registry.vercel.app/r/all.json --overwrite
+      </kbd>
     </div>
   );
 };
