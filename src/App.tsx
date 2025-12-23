@@ -9,6 +9,10 @@ const App = () => {
       children: [
         {
           path: "/",
+          element: <h1>Introduction</h1>,
+        },
+        {
+          path: "/installation",
           element: <HomePage />,
         },
         {

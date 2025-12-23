@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router";
 
 const activeSidebar =
-  "flex gap-2 font-semibold items-center px-3 py-2 rounded-lg bg-secondary text-secondary-foreground transition-colors duration-200";
+  "flex gap-2 font-semibold items-center px-3 py-2 rounded-lg bg-secondary/10 text-secondary transition-colors duration-200";
 
 const inactiveSidebar =
   "flex gap-2 font-semibold items-center px-3 py-2 rounded-lg text-card-foreground hover:text-secondary transition-colors duration-200";
@@ -9,7 +9,7 @@ const inactiveSidebar =
 type SidebarLink = {
   name: string;
   url: string;
-  icon: React.ComponentType;
+  icon?: React.ComponentType;
   end?: boolean;
 };
 
@@ -46,7 +46,7 @@ const MainTemplateSidebar = ({
           <ul>
             {sidebarGroups.map((group) => (
               <li key={group.group}>
-                <h4 className="text-muted-foreground mt-layout mb-1 px-2 text-xs font-medium">
+                <h4 className="text-muted-foreground mt-layout mb-1 px-3 text-xs font-medium">
                   {group.group}
                 </h4>
                 <ul className="mb-4 space-y-1">
@@ -59,7 +59,7 @@ const MainTemplateSidebar = ({
                           isActive ? activeSidebar : inactiveSidebar
                         }
                       >
-                        <link.icon />
+                        {link.icon && <link.icon />}
                         <span className="text-sm">{link.name}</span>
                       </NavLink>
                     </li>
