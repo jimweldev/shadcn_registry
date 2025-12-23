@@ -1,18 +1,33 @@
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router";
+import HomeLayout from "./02_layouts/home-layout";
+import HomePage from "./01_pages/home-page";
 
 const App = () => {
   const routes = [
     {
-      path: "/",
-      element: <Navigate to="/home" />,
+      element: <HomeLayout />,
+      children: [
+        {
+          path: "/",
+          element: <HomePage />,
+        },
+        {
+          path: "/button",
+          element: <h1>Button</h1>,
+        },
+        {
+          path: "/dialog",
+          element: <h1>Dialog</h1>,
+        },
+        {
+          path: "/form",
+          element: <h1>Form</h1>,
+        },
+      ],
     },
     {
-      path: "/home",
-      element: <h1>Home</h1>,
-    },
-    {
-      path: "/about",
-      element: <h1>About</h1>,
+      path: "*",
+      element: <Navigate to="/" replace />,
     },
   ];
 
