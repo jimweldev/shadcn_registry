@@ -1,10 +1,11 @@
+import ReactImage from "@/components/image/react-image";
 import { Link, NavLink } from "react-router";
 
 const activeSidebar =
-  "flex gap-2 font-semibold items-center px-3 py-2 rounded-lg bg-secondary/10 text-secondary transition-colors duration-200";
+  "flex gap-2 font-semibold items-center px-3 py-2 rounded-lg bg-primary/10 text-primary transition-colors duration-200";
 
 const inactiveSidebar =
-  "flex gap-2 font-semibold items-center px-3 py-2 rounded-lg text-card-foreground hover:text-secondary transition-colors duration-200";
+  "flex gap-2 font-semibold items-center px-3 py-2 rounded-lg bg-transparent text-card-foreground transition-colors duration-200 hover:bg-accent hover:text-accent-foreground";
 
 type SidebarLink = {
   name: string;
@@ -33,20 +34,20 @@ const MainTemplateSidebar = ({
         open ? "-ml-70 lg:ml-0" : "ml-0 lg:-ml-70"
       }`}
     >
-      <div className="p-layout flex flex-col items-center justify-between">
-        <Link className="w-full max-w-20 overflow-hidden rounded-md" to="/">
-          <img src="asd" />
-        </Link>
-        <h1 className="mt-2 text-center font-semibold transition-[margin,opacity,hidden] group-data-[collapsible=icon]:hidden group-data-[collapsible=icon]:opacity-0">
-          {import.meta.env.VITE_APP_NAME}
+      <Link className="p-layout flex items-center gap-2" to="/">
+        <div className="w-full max-w-7 overflow-hidden rounded-md">
+          <ReactImage src="/logos/logo.png" />
+        </div>
+        <h1 className="text-center font-semibold transition-[margin,opacity,hidden] group-data-[collapsible=icon]:hidden group-data-[collapsible=icon]:opacity-0">
+          Shadcn Registry
         </h1>
-      </div>
+      </Link>
       <div className="p-4 pt-0">
         <nav>
           <ul>
             {sidebarGroups.map((group) => (
               <li key={group.group}>
-                <h4 className="text-muted-foreground mt-layout mb-1 px-3 text-xs font-medium">
+                <h4 className="text-muted-foreground mt-layout mb-1 px-2 text-xs font-medium">
                   {group.group}
                 </h4>
                 <ul className="mb-4 space-y-1">

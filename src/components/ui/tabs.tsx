@@ -1,10 +1,20 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import * as TabsPrimitive from "@radix-ui/react-tabs"
+import { createContext, useContext } from "react";
+import * as TabsPrimitive from "@radix-ui/react-tabs";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
 
-import { cn } from "@/lib/utils"
+// === Context Setup ===
+type TabsVariantContextType = {
+  variant?: "default" | "outline" | "pills" | "underline" | null;
+  size?: "default" | "sm" | "lg" | null;
+};
 
+const TabsVariantContext = createContext<TabsVariantContextType>({});
+const useTabsVariant = () => useContext(TabsVariantContext);
+
+// === Tabs Root ===
 function Tabs({
   className,
   ...props
@@ -12,44 +22,96 @@ function Tabs({
   return (
     <TabsPrimitive.Root
       data-slot="tabs"
-      className={cn("flex flex-col gap-2", className)}
+      className={cn("flex flex-col", className)}
       {...props}
     />
-  )
+  );
 }
+
+// === Tabs List ===
+const tabsListVariants = cva("font-medium", {
+  variants: {
+    variant: {
+      default: "w-fit bg-muted text-muted-foreground rounded-md p-1",
+      outline: "border-b p-layout pb-0",
+      pills: "w-fit",
+      underline: "border-b-2 p-layout pb-0",
+    },
+    size: {
+      default: "text-sm",
+      sm: "text-xs",
+      lg: "text-base",
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+    size: "default",
+  },
+});
 
 function TabsList({
   className,
+  variant,
+  size,
   ...props
-}: React.ComponentProps<typeof TabsPrimitive.List>) {
+}: React.ComponentProps<typeof TabsPrimitive.List> &
+  VariantProps<typeof tabsListVariants>) {
   return (
-    <TabsPrimitive.List
-      data-slot="tabs-list"
-      className={cn(
-        "bg-muted text-muted-foreground inline-flex h-9 w-fit items-center justify-center rounded-lg p-[3px]",
-        className
-      )}
-      {...props}
-    />
-  )
+    <TabsVariantContext.Provider value={{ variant, size }}>
+      <TabsPrimitive.List
+        data-slot="tabs-list"
+        className={cn(tabsListVariants({ variant, size, className }))}
+        {...props}
+      />
+    </TabsVariantContext.Provider>
+  );
 }
+
+// === Tabs Trigger ===
+const tabsTriggerVariants = cva(
+  "inline-flex gap-2 items-center justify-center",
+  {
+    variants: {
+      variant: {
+        default:
+          "border border-transparent data-[state=active]:bg-card data-[state=active]:text-card-foreground data-[state=active]:border-border rounded-md",
+        outline:
+          "data-[state=active]:bg-card data-[state=active]:text-card-foreground border border-transparent data-[state=active]:border-border border-b-0 rounded-t-md mb-[-1px]",
+        pills:
+          "data-[state=active]:bg-secondary data-[state=active]:text-secondary-foreground rounded-full",
+        underline:
+          "data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:text-primary mb-[-2px]",
+      },
+      size: {
+        default: "px-3 py-1",
+        sm: "px-3 py-1 -m-0.5",
+        lg: "px-5 py-2",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  }
+);
 
 function TabsTrigger({
   className,
   ...props
-}: React.ComponentProps<typeof TabsPrimitive.Trigger>) {
+}: React.ComponentProps<typeof TabsPrimitive.Trigger> &
+  VariantProps<typeof tabsTriggerVariants>) {
+  const { variant, size } = useTabsVariant();
+
   return (
     <TabsPrimitive.Trigger
       data-slot="tabs-trigger"
-      className={cn(
-        "data-[state=active]:bg-background dark:data-[state=active]:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:outline-ring dark:data-[state=active]:border-input dark:data-[state=active]:bg-input/30 text-foreground dark:text-muted-foreground inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 rounded-md border border-transparent px-2 py-1 text-sm font-medium whitespace-nowrap transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:shadow-sm [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-        className
-      )}
+      className={cn(tabsTriggerVariants({ variant, size, className }))}
       {...props}
     />
-  )
+  );
 }
 
+// === Tabs Content ===
 function TabsContent({
   className,
   ...props
@@ -57,10 +119,14 @@ function TabsContent({
   return (
     <TabsPrimitive.Content
       data-slot="tabs-content"
-      className={cn("flex-1 outline-none", className)}
+      className={cn(
+        "flex-1 outline-none",
+        "data-[state=inactive]:hidden",
+        className
+      )}
       {...props}
     />
-  )
+  );
 }
 
-export { Tabs, TabsList, TabsTrigger, TabsContent }
+export { Tabs, TabsList, TabsTrigger, TabsContent };

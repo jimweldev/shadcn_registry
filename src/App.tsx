@@ -1,6 +1,9 @@
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router";
 import HomeLayout from "./02_layouts/home-layout";
-import HomePage from "./01_pages/home-page";
+import HomePage from "./01_pages/getting-started/home-page";
+import IntroductionPage from "./01_pages/getting-started/introduction-page";
+import ButtonPage from "./01_pages/components/button/button-page";
+import DialogPage from "./01_pages/components/dialog/dialog-page";
 
 const App = () => {
   const routes = [
@@ -9,7 +12,7 @@ const App = () => {
       children: [
         {
           path: "/",
-          element: <h1>Introduction</h1>,
+          element: <IntroductionPage />,
         },
         {
           path: "/installation",
@@ -17,11 +20,11 @@ const App = () => {
         },
         {
           path: "/button",
-          element: <h1>Button</h1>,
+          element: <ButtonPage />,
         },
         {
           path: "/dialog",
-          element: <h1>Dialog</h1>,
+          element: <DialogPage />,
         },
         {
           path: "/form",

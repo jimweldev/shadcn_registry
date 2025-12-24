@@ -32,6 +32,14 @@ const HomeLayout = () => {
           name: "Form",
           url: "/form",
         },
+        {
+          name: "Card",
+          url: "/card",
+        },
+        {
+          name: "Tabs",
+          url: "/tabs",
+        },
       ],
     },
   ];
